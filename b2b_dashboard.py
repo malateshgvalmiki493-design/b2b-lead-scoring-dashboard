@@ -13,12 +13,12 @@ st.title("📊 B2B SaaS — AI Buying Behaviour Dashboard")
 st.markdown("Reads `D:/b2boutput.csv`, computes composite scores, shows stage classification, and explains weight contributions.")
 
 # --------- Load CSV (adjust path if needed) ---------
-CSV_PATH = "b2boutput.csv"
+CSV_PATH = "b2boutput.xlsx"
 
 @st.cache_data
 def load_data(path):
     try:
-        df = pd.read_csv(path)
+        df = pd.read_excel(path)
         return df
     except FileNotFoundError:
         st.error(f"File not found at {path}. Please check the path and restart the app.")
@@ -220,4 +220,5 @@ st.write("- " + "\n- ".join(recommendations))
 
 st.markdown("---")
 st.markdown("**Notes:**\n* The dashboard uses normalized feature contributions and slider weights to show exactly how much each criterion adds (in percentage points) to the composite score. \n* If your CSV columns use different names, edit the `required_cols` list and mapping at the top of this file accordingly.")
+
 
